@@ -79,6 +79,18 @@ class Reviewer(Mentor):
     def __str__(self):
         return (f"Имя: {self.name}\n Фамилия: {self.surname}")
 
+def get_avg_lect_grade(lecturers, course):
+    summ = 0
+    for lecturer in lecturers:
+        summ += sum(lecturer.grades[course]) / len(lecturer.grades[course])
+    return summ / len(lecturers)
+
+def get_avg_lect_grade(lecturers, course):
+    summ = 0
+    for lecturer in lecturers:
+        summ += sum(lecturer.grades[course]) / len(lecturer.grades[course])
+    return sum([sum(lecturer.grades[course]) / len(lecturer.grades[course]) for lecturer in lecturers]) / len(lecturers)
+
 
 student_1 = Student('Lina', 'Nova', 'woman')
 student_1.courses_in_progress = ['Python', 'Java Script', 'C++']
@@ -165,3 +177,5 @@ print(student_2.lt(student_1))
 print(lecture_1.lt(lecture_2))
 print(lecture_2.lt(lecture_1))
 
+print(get_avg_lect_grade([lecture_1], 'Python'))
+print(get_avg_lect_grade([lecture_2], 'Python'))
